@@ -1,0 +1,99 @@
+ Sequences ##################################
+   Data Types in Python
+       List - sequence of mutable values
+       tuple - sequence of immutable values
+       set - collection of unique values
+       dict - collection of key-value pairs
+       And More . . .
+ Sets ############################################
+ Set is a data type where you can and and move data, but it will not allow for duplicate data.
+   set = set()
+   set.add(1)
+   set.add(2)
+   set.add(3)
+   set.add(4)
+   print(set)
+   print(f"The set has {len(set)} items")
+ Loops ###########################################
+   for i in range(10):
+        print(i+1)
+   names = ["Jim", "Kim", "Joe"]
+   for name in names:
+       print(name)
+ Dictionaries ##################################
+   people = {"Harry": "Daddy", "Jimmithy": "Momma"}
+   people["Karry"] = "Dog"
+   people["Harry"] = {"Daddy": "Jimbo"}
+   print(people["Harry"]["Daddy"])
+Functions #######################################
+def square(x):
+    return x * x 
+Import Syntax ###################################
+    EX 1:   from Functions import square
+            square(2)
+    EX 2: import Functions
+            Functions.square(2)
+Classes #####################################
+class Point ():
+     def __init__(self, x, y):
+         self.x = x
+         self.y = y
+p = Point(3, 6)
+print(p.x, p.y)
+class Flight():
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.passengers = []
+    def add_passenger(self, name):
+        if not self.open_seats():
+            return False
+        self.passengers.append(name)
+        return True
+    def open_seats(self):
+        return self.capacity - len(self.passengers)
+flight = Flight(3)
+people = ["Herry", "John", "Joe", "Bob"]
+for person in people:
+    if flight.add_passenger(person):
+        print(f"{person} was successfully added to the flight")
+    else:
+        print(f"No available seats for {person}")
+Decorators #################################
+Decorators are pretty much functions that take in functions. They enable you to modify a function by 
+wrapping the said function by another function. You can do this using the @decoratorName above the function.
+def announce(func):
+    def wrapper():
+        print("About to run the function")
+        func()
+        print("Done with the function")
+    return wrapper
+@announce
+def hello():
+    print("Hello, world!")
+hello()
+Lambda #####################################################
+Lambdas are inline functions a that make it easier and cleaner to call functions, example is as seen 
+below in the people.sort(lambda . . .)
+people = [
+    {"name" : "Zobby", "house": "Santa"},
+    {"name": "Dingus", "house": "Elves"},
+    {"name": "Bro", "house": "Santa"}
+]
+people.sort(key=lambda person: person["name"])
+print(people)
+Exceptions ################################################
+Exceptions are pretty much try catch blocks in JavaScript where it will try to do the above code block but
+if it fails it will fall to the except block. This has an input for a specific exception/error you can look for.
+import sys
+try:
+    x = int(input("x: "))
+    y = int(input("y: "))
+except ValueError:
+    print("Error: Invalid Input")
+    sys.exit(1)
+try:
+    result = x / y
+except ZeroDivisionError:
+    print("Error: Cannot divide by 0.")
+    sys.exit(1)
+print(f"{x} / {y} = {result}")
